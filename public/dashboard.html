@@ -7,7 +7,7 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="./css/styles.css">
   
   <style>
     body {
@@ -296,7 +296,7 @@
 
   <!-- Navbar -->
   <nav class="navbar scrolled" id="navbar">
-    <a href="/" class="nav-brand">
+    <a href="./index.html" class="nav-brand">
       <i class="fa-solid fa-compass"></i> Regal Travel
     </a>
     
@@ -305,9 +305,9 @@
     </button>
     
     <div class="nav-links" id="navLinks">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/recommendations.html" class="nav-link">Destinations</a>
-      <a href="/dashboard.html" class="nav-link active" id="navDashboardBtn">My Dashboard</a>
+      <a href="./index.html" class="nav-link">Home</a>
+      <a href="./recommendations.html" class="nav-link">Destinations</a>
+      <a href="./dashboard.html" class="nav-link active" id="navDashboardBtn">My Dashboard</a>
       <button class="btn btn-secondary" id="navLogoutBtn">Logout</button>
     </div>
   </nav>
@@ -346,7 +346,7 @@
     <section id="saved">
       <h2 class="section-heading">
         Saved Destinations
-        <a href="/recommendations.html" style="font-size: 0.9rem; font-weight: 500; color: var(--color-gold);"><i class="fa-solid fa-plus"></i> Explore More</a>
+        <a href="./recommendations.html" style="font-size: 0.9rem; font-weight: 500; color: var(--color-gold);"><i class="fa-solid fa-plus"></i> Explore More</a>
       </h2>
       
       <div id="savedGrid" class="grid fade-up delay-1">
@@ -372,8 +372,9 @@
     </div>
   </footer>
 
-  <script src="/js/sky-animation.js"></script>
-  <script src="/js/api.js"></script>
-  <script src="/js/dashboard.js"></script>
+  <script src="./js/sky-animation.js"></script>
+  <script src="./js/data.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/dashboard.js"></script>
 </body>
 </html>
