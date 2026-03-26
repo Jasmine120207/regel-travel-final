@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regal Travel | Plan Your Trip By Budget</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <i class="fa-solid fa-compass"></i> Regal Travel
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    
+    <div class="nav-links" id="navLinks">
+      <a href="./index.html" class="nav-link active">Home</a>
+      <a href="./recommendations.html" class="nav-link">Destinations</a>
+      
+      <!-- Show when logged out -->
+      <a href="./auth.html" class="nav-link" id="navLoginBtn">Login</a>
+      <a href="./auth.html" class="btn btn-primary" id="navSignupBtn">Sign Up</a>
+      
+      <!-- Show when logged in -->
+      <a href="./dashboard.html" class="nav-link auth-hidden" id="navDashboardBtn">My Dashboard</a>
+      <button class="btn btn-secondary auth-hidden" id="navLogoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1920&q=80" alt="Taj Mahal at sunrise" class="hero-bg">
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <span class="hero-subtitle fade-up">Bespoke Journeys Await</span>
+      <h1 class="fade-up delay-1">Plan Your Trip Based on Your Budget.</h1>
+      <p class="fade-up delay-2">Experience India's most breathtaking destinations curated exactly for what you want to spend. No hidden costs. Pure travel luxury.</p>
+      
+      <!-- Budget Finder -->
+      <form id="budgetForm" class="budget-finder fade-up delay-3">
+        <div class="budget-input-group">
+          <span class="budget-currency">₹</span>
+          <input type="number" id="budgetInput" class="budget-input" placeholder="Enter your maximum budget..." required min="1000">
+        </div>
+        <button type="submit" class="btn btn-gold">Find Trips <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why Regal</span>
+        <h2 class="section-title">A New Standard in Travel</h2>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-wallet"></i></div>
+          <h3>Budget Intelligence</h3>
+          <p>Tell us what you want to spend, and our engine filters out the noise to give you realistic, premium options that fit perfectly.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3>Curated Itineraries</h3>
+          <p>Every destination comes with a meticulously planned day-by-day itinerary to ensure you experience the absolute best.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3>Transparent Costs</h3>
+          <p>See exactly where your money goes with our detailed visual budget breakdowns for food, travel, and accommodation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h2><i class="fa-solid fa-compass" style="color: var(--color-gold);"></i> Regal Travel</h2>
+          <p>Elevating the art of travel through intelligent budget design and curated premium experiences across India.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="./recommendations.html">All Destinations</a></li>
+            <li><a href="./recommendations.html?budget=5000">Budget Escapes</a></li>
+            <li><a href="./recommendations.html?budget=15000">Mid-tier Journeys</a></li>
+            <li><a href="./recommendations.html?budget=50000">Premium Luxury</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="./auth.html">Sign In</a></li>
+            <li><a href="./auth.html">Register</a></li>
+            <li><a href="./dashboard.html">My Dashboard</a></li>
+            <li><a href="/dashboard.html#saved">Saved Trips</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Regal Travel. Designed with the Regal Palette.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./js/sky-animation.js?v=1774533971797"></script>
+  <script src="./js/data.js?v=1774533971797"></script>
+  <script src="./js/api.js?v=1774533971797"></script>
+  <script src="./js/app.js?v=1774533971797"></script>
+</body>
+</html>
