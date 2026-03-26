@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regal Travel | Sign In</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  
+  <style>
+    /* ===== Travel Login Page ===== */
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 40%, #2c5364 100%);
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ===== Animated Sky Background ===== */
+    .sky-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Stars */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #fff;
+      border-radius: 50%;
+      animation: starTwinkle 2s infinite ease-in-out alternate;
+    }
+    @keyframes starTwinkle {
+      0% { opacity: 0.2; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      opacity: 0.15;
+      z-index: 1;
+    }
+    .cloud::before, .cloud::after, .cloud .cloud-body {
+      content: '';
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .cloud .cloud-body { width: 120px; height: 40px; border-radius: 20px; }
+    .cloud::before { width: 50px; height: 50px; top: -25px; left: 20px; }
+    .cloud::after { width: 70px; height: 70px; top: -35px; left: 50px; }
+
+    .cloud-1 { top: 15%; animation: driftCloud 35s linear infinite; }
+    .cloud-2 { top: 35%; animation: driftCloud 50s linear infinite; animation-delay: -15s; opacity: 0.1; }
+    .cloud-3 { top: 55%; animation: driftCloud 40s linear infinite; animation-delay: -25s; opacity: 0.08; }
+
+    @keyframes driftCloud {
+      0% { left: -200px; }
+      100% { left: 110vw; }
+    }
+
+    /* Airplane */
+    .airplane {
+      position: absolute;
+      z-index: 2;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.7);
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+    }
+    .airplane-1 {
+      top: 20%;
+      animation: flyAcross 18s linear infinite;
+    }
+    .airplane-2 {
+      top: 60%;
+      font-size: 1.2rem;
+      opacity: 0.4;
+      animation: flyAcross 30s linear infinite;
+      animation-delay: -10s;
+    }
+    @keyframes flyAcross {
+      0% { left: -80px; transform: rotate(-5deg); }
+      50% { transform: rotate(-2deg) translateY(-15px); }
+      100% { left: 110vw; transform: rotate(-5deg); }
+    }
+
+    /* Hot Air Balloon */
+    .balloon {
+      position: absolute;
+      z-index: 2;
+      animation: floatBalloon 12s ease-in-out infinite alternate;
+    }
+    .balloon-body {
+      width: 50px;
+      height: 60px;
+      border-radius: 50% 50% 10% 10%;
+      position: relative;
+    }
+    .balloon-body::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 15px;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+    }
+    .balloon-body::before {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid rgba(255,255,255,0.3);
+    }
+    .balloon-strings {
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 14px;
+    }
+    .balloon-strings::before, .balloon-strings::after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 14px;
+      background: rgba(255,255,255,0.3);
+    }
+    .balloon-strings::before { left: -6px; transform: rotate(5deg); }
+    .balloon-strings::after { left: 6px; transform: rotate(-5deg); }
+
+    .balloon-1 {
+      right: 12%;
+      top: 18%;
+    }
+    .balloon-1 .balloon-body { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+    .balloon-1 .balloon-strings::before, .balloon-1 .balloon-strings::after { background: rgba(255,107,107,0.4); }
+
+    .balloon-2 {
+      left: 8%;
+      top: 40%;
+      animation-delay: -4s;
+      animation-duration: 16s;
+      transform: scale(0.7);
+    }
+    .balloon-2 .balloon-body { background: linear-gradient(135deg, #f9ca24, #f0932b); }
+    .balloon-2 .balloon-strings::before, .balloon-2 .balloon-strings::after { background: rgba(249,202,36,0.4); }
+
+    .balloon-3 {
+      right: 25%;
+      top: 55%;
+      animation-delay: -8s;
+      animation-duration: 14s;
+      transform: scale(0.5);
+    }
+    .balloon-3 .balloon-body { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+
+    @keyframes floatBalloon {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-30px) translateX(15px); }
+    }
+    .balloon-2 { animation-name: floatBalloon2; }
+    @keyframes floatBalloon2 {
+      0% { transform: translateY(0) translateX(0) scale(0.7); }
+      100% { transform: translateY(-25px) translateX(-10px) scale(0.7); }
+    }
+    .balloon-3 { animation-name: floatBalloon3; }
+    @keyframes floatBalloon3 {
+      0% { transform: translateY(0) translateX(0) scale(0.5); }
+      100% { transform: translateY(-20px) translateX(10px) scale(0.5); }
+    }
+
+    /* World Map Dotted Path */
+    .world-path {
+      position: absolute;
+      bottom: 8%;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      z-index: 1;
+      opacity: 0.12;
+    }
+    .world-path svg {
+      width: 100%;
+      height: 100%;
+    }
+    .world-path .path-line {
+      stroke: #fff;
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 8 6;
+      animation: dashMove 3s linear infinite;
+    }
+    .world-path .path-dot {
+      fill: #f9ca24;
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+    @keyframes dashMove {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -28; }
+    }
+    @keyframes pulseDot {
+      0%, 100% { r: 4; opacity: 0.6; }
+      50% { r: 7; opacity: 1; }
+    }
+
+    /* Compass Rose */
+    .compass {
+      position: absolute;
+      left: 5%;
+      bottom: 15%;
+      width: 100px;
+      height: 100px;
+      z-index: 1;
+      opacity: 0.12;
+      animation: rotateCompass 20s linear infinite;
+    }
+    .compass::before {
+      content: '✦';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+      color: #fff;
+    }
+    @keyframes rotateCompass {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Location Pin Bounce */
+    .pin {
+      position: absolute;
+      z-index: 2;
+      font-size: 1.4rem;
+      color: #ff6b6b;
+      filter: drop-shadow(0 2px 6px rgba(255,107,107,0.4));
+      animation: pinBounce 2s ease-in-out infinite;
+    }
+    .pin-1 { left: 15%; bottom: 22%; animation-delay: 0s; }
+    .pin-2 { left: 40%; bottom: 18%; animation-delay: -0.6s; color: #f9ca24; filter: drop-shadow(0 2px 6px rgba(249,202,36,0.4)); }
+    .pin-3 { right: 20%; bottom: 25%; animation-delay: -1.2s; color: #6c5ce7; filter: drop-shadow(0 2px 6px rgba(108,92,231,0.4)); }
+    .pin-4 { right: 35%; bottom: 15%; animation-delay: -1.8s; color: #00cec9; filter: drop-shadow(0 2px 6px rgba(0,206,201,0.4)); }
+    @keyframes pinBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ===== Auth Container ===== */
+    .auth-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px 60px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .auth-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      width: 100%;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      animation: cardAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    @keyframes cardAppear {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .auth-header {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      padding: 35px 30px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .auth-header h2 {
+      color: #f9ca24;
+      margin-bottom: 5px;
+      font-size: 2.2rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      text-shadow: 0 2px 10px rgba(249,202,36,0.3);
+    }
+
+    .auth-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    .auth-tabs {
+      display: flex;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .auth-tab {
+      flex: 1;
+      background: none;
+      border: none;
+      padding: 15px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.45);
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .auth-tab:hover {
+      color: rgba(255,255,255,0.7);
+    }
+    .auth-tab.active {
+      color: #f9ca24;
+      border-bottom-color: #f9ca24;
+    }
+
+    .auth-body {
+      padding: 35px 30px;
+    }
+
+    .auth-form {
+      display: none;
+      animation: fadeSlideIn 0.4s ease forwards;
+    }
+    .auth-form.active {
+      display: block;
+    }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+      transition: transform 0.2s ease;
+    }
+    .form-group:focus-within {
+      transform: translateY(-2px);
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .form-group .input-field {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .form-group .input-field::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+    .form-group .input-field:focus {
+      border-color: #f9ca24;
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 0 0 3px rgba(249,202,36,0.15);
+    }
+
+    .error-msg {
+      color: #ff6b6b;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      margin-top: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f9ca24, #f0932b);
+      color: #0f2027;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(249,202,36,0.35);
+    }
+    .submit-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Navbar Override */
+    .navbar.scrolled { background: rgba(15,32,39,0.9); backdrop-filter: blur(10px); }
+    .nav-brand { color: #fff !important; text-decoration: none; }
+    .nav-brand i { color: #f9ca24; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .balloon, .compass, .pin { display: none; }
+      .auth-card { margin: 0 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sky-bg">
+    <!-- Stars -->
+    <div class="stars" id="starsContainer"></div>
+    
+    <!-- Clouds -->
+    <div class="cloud cloud-1"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-2"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-3"><div class="cloud-body"></div></div>
+    
+    <!-- Airplanes -->
+    <div class="airplane airplane-1"><i class="fa-solid fa-plane"></i></div>
+    <div class="airplane airplane-2"><i class="fa-solid fa-plane"></i></div>
+    
+    <!-- Hot Air Balloons -->
+    <div class="balloon balloon-1">
+      <div class="balloon-body"><div class="balloon-strings"></div></div>
+    </div>
+    <div class="balloon balloon-2">
+      <div class="balloon-body"><div class="balloon-strings"></div></div>
+    </div>
+    <div class="balloon balloon-3">
+      <div class="balloon-body"><div class="balloon-strings"></div></div>
+    </div>
+
+    <!-- Compass -->
+    <div class="compass"></div>
+
+    <!-- Location Pins -->
+    <div class="pin pin-1"><i class="fa-solid fa-location-dot"></i></div>
+    <div class="pin pin-2"><i class="fa-solid fa-location-dot"></i></div>
+    <div class="pin pin-3"><i class="fa-solid fa-location-dot"></i></div>
+    <div class="pin pin-4"><i class="fa-solid fa-location-dot"></i></div>
+
+    <!-- Dotted Travel Path -->
+    <div class="world-path">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path class="path-line" d="M0 80 Q150 20 300 60 T600 40 T900 70 T1200 30" />
+        <circle class="path-dot" cx="300" cy="60" r="5" />
+        <circle class="path-dot" cx="600" cy="40" r="5" style="animation-delay: -0.5s;" />
+        <circle class="path-dot" cx="900" cy="70" r="5" style="animation-delay: -1s;" />
+      </svg>
+    </div>
+  </div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="/" class="nav-brand">
+      <i class="fa-solid fa-compass"></i> Regal Travel
+    </a>
+  </nav>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h2>Welcome to Regal</h2>
+        <p>Your premium travel experience awaits</p>
+      </div>
+      
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin">Sign In</button>
+        <button class="auth-tab" id="tabSignup">Register</button>
+      </div>
+      
+      <div class="auth-body">
+        
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active">
+          <div id="loginError" class="error-msg" style="margin-bottom: 15px; text-align: center;"></div>
+          
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" class="input-field" required placeholder="you@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" class="input-field" required placeholder="••••••••">
+          </div>
+          
+          <button type="submit" class="btn btn-primary submit-btn" id="loginSubmitBtn">Sign In</button>
+        </form>
+        
+        <!-- Signup Form -->
+        <form id="signupForm" class="auth-form">
+          <div id="signupError" class="error-msg" style="margin-bottom: 15px; text-align: center;"></div>
+          
+          <div class="form-group">
+            <label for="signupName">Full Name</label>
+            <input type="text" id="signupName" class="input-field" required placeholder="John Doe">
+          </div>
+          
+          <div class="form-group">
+            <label for="signupEmail">Email Address</label>
+            <input type="email" id="signupEmail" class="input-field" required placeholder="you@example.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" id="signupPassword" class="input-field" required minlength="6" placeholder="At least 6 characters">
+          </div>
+          
+          <button type="submit" class="btn btn-primary submit-btn" id="signupSubmitBtn">Create Account</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Generate Stars Dynamically -->
+  <script>
+    (function() {
+      const container = document.getElementById('starsContainer');
+      for (let i = 0; i < 80; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = (Math.random() * 3) + 's';
+        star.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+        star.style.width = star.style.height = (2 + Math.random() * 2) + 'px';
+        container.appendChild(star);
+      }
+    })();
+  </script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
